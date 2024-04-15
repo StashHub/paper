@@ -1,5 +1,4 @@
 import { Icons } from '@/components/ui/icons';
-import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { buttonVariants } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
