@@ -14,7 +14,7 @@ const Layout = ({
     <>
       <header className='sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 '>
         <div className='mx-auto w-full max-w-screen-xl px-2.5 md:px-20'>
-          <div className='flex h-20 items-center justify-between py-6'>
+          <div className='flex h-15 items-center justify-between py-4'>
             <Navbar items={marketing} />
             <nav>
               <div className='flex items-center'>

@@ -50,14 +50,14 @@ export default async function Home() {
           <div>
             <div className='mx-auto max-w-6xl px-6 lg:px-8'>
               <div className='mt-16 flow-root sm:mt-24'>
-                <div className='-m-2 rounded-xl ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-3xl'>
+                <div className='-m-2 rounded-xl ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl'>
                   <Image
                     src='/dashboard.jpg'
                     alt='product preview'
                     width={1440}
                     height={900}
                     quality={100}
-                    className='rounded-md bg-white shadow-2xl '
+                    className='bg-white shadow-2xl rounded-xl lg:rounded-2xl'
                   />
                 </div>
               </div>
@@ -140,14 +140,14 @@ export default async function Home() {
 
         <div className='mx-auto max-w-6xl px-6 lg:px-8'>
           <div className='mt-16 flow-root sm:mt-24'>
-            <div className='-m-2 rounded-xl shadow-2xl lg:rounded-3xl lg:-m-4'>
+            <div className='-m-2 rounded-xl shadow-2xl lg:rounded-2xl lg:-m-4'>
               <Image
                 src='/file-upload.jpg'
                 alt='uploading preview'
                 width={1440}
                 height={900}
                 quality={100}
-                className='rounded-md bg-white shadow-2xl lg:rounded-3xl'
+                className='bg-white shadow-2xl rounded-xl lg:rounded-2xl'
               />
             </div>
           </div>
