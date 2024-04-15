@@ -55,7 +55,7 @@ export default async function Home() {
                   <Image
                     src='/dashboard.jpg'
                     alt='product preview'
-                    width={1400}
+                    width={1440}
                     height={900}
                     quality={100}
                     className='rounded-md bg-white shadow-2xl '
@@ -87,7 +87,7 @@ export default async function Home() {
             <h2 className='mt-2 font-bold text-4xl text-gray-900 sm:text-5xl'>
               Start chatting in minutes
             </h2>
-            <p className='mt-4 text-lg text-gray-600'>
+            <p className='mt-4 text-lg text--500'>
               Chatting to your PDF files has never been easier than with Aiden.
             </p>
           </div>
@@ -145,7 +145,7 @@ export default async function Home() {
               <Image
                 src='/file-upload.jpg'
                 alt='uploading preview'
-                width={1400}
+                width={1440}
                 height={900}
                 quality={100}
                 className='rounded-md bg-white shadow-2xl lg:rounded-3xl'
