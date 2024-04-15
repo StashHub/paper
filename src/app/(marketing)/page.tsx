@@ -1,4 +1,4 @@
-import { Icons } from '@/components/icons';
+import { Icons } from '@/components/ui/icons';
 import MaxWidthWrapper from '@/components/max-width-wrapper';
 import { buttonVariants } from '@/components/ui/button';
 import Image from 'next/image';
@@ -7,15 +7,15 @@ import Link from 'next/link';
 export default async function Home() {
   return (
     <>
-      <MaxWidthWrapper className='mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center'>
-        <div className='mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50'>
+      <section className='mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center'>
+        <div className='mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border-gray-200 px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50'>
           <p className='text-sm font-medium text-gray-700'>Aiden</p>
         </div>
         <h1 className='max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl'>
           Chat with your <span className='text-blue-600'>documents</span> in
           seconds.
         </h1>
-        <p className='mt-5 max-w-prose text-zinc-500 sm:text-lg'>
+        <p className='mt-5 max-w-prose text-slate-500 sm:text-lg'>
           Aiden allows you to have conversations with any PDF document. Simply
           upload your file and start asking questions right away.
         </p>
@@ -30,7 +30,7 @@ export default async function Home() {
         >
           Get Started <Icons.chevronRight className='ml-2 h-5 w-5' />
         </Link>
-      </MaxWidthWrapper>
+      </section>
 
       {/* value proposition */}
       <div>
@@ -96,12 +96,12 @@ export default async function Home() {
         {/* steps */}
         <ol className='my-8 space-y-4 pt-8 md:flex md:space-x-12 md:space-y-0'>
           <li className='md:flex-1'>
-            <div className='flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
+            <div className='flex flex-col space-y-2 border-l-4 border-slate-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
               <span className='text-sm font-medium text-blue-600'>Step 1</span>
               <span className='text-xl font-semibold'>
                 Sign up for an account
               </span>
-              <span className='mt-2 text-zinc-700'>
+              <span className='mt-2 text-slate-700'>
                 Either starting out with a free plan or choose our{' '}
                 <Link
                   href='/pricing'
@@ -114,24 +114,24 @@ export default async function Home() {
             </div>
           </li>
           <li className='md:flex-1'>
-            <div className='flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
+            <div className='flex flex-col space-y-2 border-l-4 border-slate-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
               <span className='text-sm font-medium text-blue-600'>Step 2</span>
               <span className='text-xl font-semibold'>
                 Upload your PDF file
               </span>
-              <span className='mt-2 text-zinc-700'>
+              <span className='mt-2 text-slate-700'>
                 We&apos;ll process your file and make it ready for you to chat
                 with.
               </span>
             </div>
           </li>
           <li className='md:flex-1'>
-            <div className='flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
+            <div className='flex flex-col space-y-2 border-l-4 border-slate-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
               <span className='text-sm font-medium text-blue-600'>Step 3</span>
               <span className='text-xl font-semibold'>
                 Start asking questions
               </span>
-              <span className='mt-2 text-zinc-700'>
+              <span className='mt-2 text-slate-700'>
                 It&apos;s that simple. Try out Aiden today - it really takes
                 less than a minute.
               </span>
