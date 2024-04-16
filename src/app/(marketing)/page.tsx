@@ -2,34 +2,47 @@ import { Icons } from '@/components/ui/icons';
 import { buttonVariants } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import {
+  Actions,
+  Description,
+  Header,
+  Heading,
+} from '@/components/page-header';
+import { cn } from '@/lib/utils';
+import Announcement from '@/components/announcement';
 
 export default async function Home() {
   return (
     <>
-      <section className='mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center'>
-        <div className='mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border-gray-200 px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50'>
-          <p className='text-sm font-medium text-gray-700'>Aiden</p>
-        </div>
-        <h1 className='max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl'>
+      <Header>
+        <Announcement />
+        <Heading>
           Chat with your <span className='text-blue-600'>documents</span> in
           seconds.
-        </h1>
-        <p className='mt-5 max-w-prose text-slate-500 sm:text-lg'>
+        </Heading>
+        <Description>
           Aiden allows you to have conversations with any PDF document. Simply
           upload your file and start asking questions right away.
-        </p>
-
-        <Link
-          className={buttonVariants({
-            size: 'lg',
-            className: 'mt-5',
-          })}
-          href='/dashboard'
-          target='_blank'
-        >
-          Get Started <Icons.chevronRight className='ml-2 h-5 w-5' />
-        </Link>
-      </section>
+        </Description>
+        <Actions>
+          <Link
+            href='/dashboard'
+            target='_blank'
+            className={cn(buttonVariants({ size: 'lg' }), 'w-full md:w-auto')}
+          >
+            Get Started <Icons.chevronRight className='ml-2 h-5 w-5' />
+          </Link>
+          <Link
+            href='/docs'
+            className={cn(
+              buttonVariants({ variant: 'outline', size: 'lg' }),
+              'w-full md:w-auto'
+            )}
+          >
+            Documentation
+          </Link>
+        </Actions>
+      </Header>
 
       {/* value proposition */}
       <div>
@@ -49,7 +62,7 @@ export default async function Home() {
 
           <div>
             <div className='mx-auto max-w-6xl px-6 lg:px-8'>
-              <div className='mt-16 flow-root sm:mt-24'>
+              <div className='mt-6 flow-root sm:mt-10'>
                 <div className='-m-2 rounded-xl ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl'>
                   <Image
                     src='/dashboard.jpg'

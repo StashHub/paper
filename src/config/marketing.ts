@@ -1,6 +1,6 @@
 import { NavItem } from '@/types/nav';
 
 export const marketing: NavItem[] = [
-  { title: 'Features', href: '/features' },
+  { title: 'Products', href: '/products' },
   { title: 'Pricing', href: '/pricing' },
 ];
