@@ -4,6 +4,7 @@ import ThemeToggle from '@/components/theme-toggle';
 import { buttonVariants } from '@/components/ui/button';
 import { marketing } from '@/config/marketing';
 import { cn } from '@/lib/utils';
+import { LoginLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server';
 
 const Layout = ({
   children,
@@ -17,14 +18,21 @@ const Layout = ({
           <div className='flex h-15 items-center justify-between py-4'>
             <Navbar items={marketing} />
             <nav>
-              <div className='flex items-center'>
+              <div className='hidden items-center space-x-4 lg:flex'>
                 <ThemeToggle />
-                <Link
-                  href='/signin'
-                  className={cn(buttonVariants({ size: 'sm' }), 'px-4')}
+                <LoginLink
+                  className={cn(
+                    buttonVariants({ variant: 'ghost', size: 'sm' }),
+                    'px-4'
+                  )}
                 >
                   Signin
-                </Link>
+                </LoginLink>
+                <RegisterLink
+                  className={cn(buttonVariants({ size: 'sm' }), 'px-4')}
+                >
+                  Get Started
+                </RegisterLink>
               </div>
             </nav>
           </div>
