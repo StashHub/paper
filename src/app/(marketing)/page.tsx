@@ -51,10 +51,10 @@ export default async function Home() {
       <div className='mx-auto mb-32 mt-324 max-w-5xl sm:mt-48'>
         <div className='mb-12 px-6 lg:px-8'>
           <div className='mx-auto max-w-2xl sm:text-center'>
-            <h2 className='mt-2 font-bold text-4xl text-gray-900 sm:text-5xl'>
+            <h2 className='mt-2 font-bold text-4xl sm:text-5xl'>
               Start chatting in minutes
             </h2>
-            <p className='mt-4 text-lg text--500'>
+            <p className='mt-4 text-lg text-muted-foreground'>
               Chatting to your PDF files has never been easier than with Aiden.
             </p>
           </div>
@@ -68,7 +68,7 @@ export default async function Home() {
               <span className='text-xl font-semibold'>
                 Sign up for an account
               </span>
-              <span className='mt-2 text-slate-700'>
+              <span className='mt-2 text-muted-foreground'>
                 Either starting out with a free plan or choose our{' '}
                 <Link
                   href='/pricing'
@@ -86,7 +86,7 @@ export default async function Home() {
               <span className='text-xl font-semibold'>
                 Upload your PDF file
               </span>
-              <span className='mt-2 text-slate-700'>
+              <span className='mt-2 text-muted-foreground'>
                 We&apos;ll process your file and make it ready for you to chat
                 with.
               </span>
@@ -98,7 +98,7 @@ export default async function Home() {
               <span className='text-xl font-semibold'>
                 Start asking questions
               </span>
-              <span className='mt-2 text-slate-700'>
+              <span className='mt-2 text-muted-foreground'>
                 It&apos;s that simple. Try out Aiden today - it really takes
                 less than a minute.
               </span>
