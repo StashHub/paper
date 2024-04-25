@@ -1,5 +1,4 @@
 import Navbar from '@/components/nav';
-import Link from 'next/link';
 import ThemeToggle from '@/components/theme-toggle';
 import { buttonVariants } from '@/components/ui/button';
 import { marketing } from '@/config/marketing';

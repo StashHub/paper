@@ -7,7 +7,7 @@ import { Icons } from '@/components/ui/icons';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 
-type Props = { items: NavItem[] };
+type Props = { items?: NavItem[] };
 
 const Navbar = ({ items }: Props) => {
   const pathname = usePathname();
@@ -20,7 +20,7 @@ const Navbar = ({ items }: Props) => {
           {siteConfig.name}
         </span>
       </Link>
-      {items.map((item, index) =>
+      {items?.map((item, index) =>
         item.href && !item.disabled ? (
           <Link
             key={index}
