@@ -4,6 +4,8 @@ import {
   Moon,
   Laptop,
   LucideProps,
+  User,
+  Zap,
 } from 'lucide-react';
 
 export const Icons = {
@@ -11,6 +13,8 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
+  avatar: User,
+  zap: Zap,
   logo: ({ ...props }: LucideProps) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'
