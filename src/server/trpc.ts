@@ -1,8 +1,7 @@
 import { initTRPC, TRPCError } from '@trpc/server';
-import { type Context } from '@/server/context';
-
-import { ZodError } from 'zod';
 import { transformer } from '@/utils/transformer';
+import { ZodError } from 'zod';
+import type { Context } from '@/server/context';
 
 export const t = initTRPC.context<Context>().create({
   /**
@@ -24,7 +23,6 @@ export const t = initTRPC.context<Context>().create({
   },
 });
 
-
 /**
  * Create a router
  * @link https://trpc.io/docs/v11/router
@@ -38,12 +36,9 @@ export const router = t.router;
 export const publicProcedure = t.procedure;
 
 /**
- * Create a server-side caller
- * @link https://trpc.io/docs/v11/server/server-side-calls
+ * Protected base procedure
  */
-export const createCallerFactory = t.createCallerFactory;
-
-export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
+export const authProcedure = t.procedure.use(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user?.id) {
     throw new TRPCError({ code: 'UNAUTHORIZED' });
   }
@@ -54,3 +49,9 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
     },
   });
 });
+
+/**
+ * Create a server-side caller
+ * @link https://trpc.io/docs/v11/server/server-side-calls
+ */
+export const createCallerFactory = t.createCallerFactory;

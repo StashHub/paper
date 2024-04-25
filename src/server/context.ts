@@ -6,26 +6,24 @@ interface CreateContextOptions {
   session: { user: KindeUser | null };
 }
 
-/**
- * Inner function for `createContext` where we create the context.
- * This is useful for testing when we don't want to mock Next.js' request/response
- */
+// Useful for testing when we don't want to mock Next.js' request/response
 export async function createContextInner(_opts: CreateContextOptions) {
   return { session: _opts.session, prisma };
 }
-
-export type Context = Awaited<ReturnType<typeof createContextInner>>;
 
 /**
  * Creates context for an incoming request
  * @link https://trpc.io/docs/v11/context
  */
-export async function createContext(opts: {
+export const createContext = async (opts: {
   headers: Headers;
-}): Promise<Context> {
-  // Get the session from the server using the getKindeServerSession wrapper function
+}): Promise<Context> => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
+  console.log('createContext for', user?.given_name ?? 'unknown user');
+
   return await createContextInner({ session: { user }, ...opts });
-}
+};
+
+export type Context = Awaited<ReturnType<typeof createContextInner>>;

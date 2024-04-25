@@ -1,7 +1,7 @@
-import { router, protectedProcedure } from '@/server/trpc';
+import { router, authProcedure } from '@/server/trpc';
 
 export const userRouter = router({
-  byId: protectedProcedure.query(async ({ ctx }) => {
-    return ctx.prisma.user.getById(ctx.session.user?.id);
+  byId: authProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.user.getById(ctx.session.user?.id);
   }),
 });
