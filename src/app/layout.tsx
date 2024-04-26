@@ -4,6 +4,7 @@ import { fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import ThemeProvider from '@/components/theme-provider';
 import { siteConfig } from '@/config/site';
+import { Toaster } from '@/components/ui/sonner';
 
 export const metadata: Metadata = {
   title: {
@@ -68,6 +69,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
