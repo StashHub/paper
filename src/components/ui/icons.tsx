@@ -6,6 +6,9 @@ import {
   LucideProps,
   User,
   Zap,
+  Cloud,
+  File,
+  Loader2,
 } from 'lucide-react';
 
 export const Icons = {
@@ -15,6 +18,9 @@ export const Icons = {
   laptop: Laptop,
   avatar: User,
   zap: Zap,
+  cloud: Cloud,
+  file: File,
+  loader: Loader2,
   logo: ({ ...props }: LucideProps) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'
