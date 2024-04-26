@@ -14,6 +14,8 @@ export const env = createEnv({
     KINDE_POST_LOGOUT_REDIRECT_URL: z.string().url(),
     KINDE_POST_LOGIN_REDIRECT_URL: z.string().url(),
     PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK: z.boolean().default(true),
+    UPLOADTHING_SECRET: z.string(),
+    UPLOADTHING_APP_ID: z.string(),
   },
 
   /**
@@ -26,7 +28,7 @@ export const env = createEnv({
   },
 
   /**
-   * We can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
+   * We can't destruct `process.env` as a regular object in the Next.js edge run-times (e.g.
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
@@ -40,6 +42,8 @@ export const env = createEnv({
     KINDE_POST_LOGIN_REDIRECT_URL: process.env.KINDE_POST_LOGIN_REDIRECT_URL,
     PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK:
       process.env.PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK,
+    UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
+    UPLOADTHING_APP_ID: process.env.UPLOADTHING_APP_ID,
   },
 
   /**
