@@ -1,9 +1,8 @@
 import { trpc } from '@/utils/trpc';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { createUploadthing, type FileRouter } from 'uploadthing/next';
-import type { inferProcedureInput } from '@trpc/server';
 import { UploadThingError } from 'uploadthing/server';
-import { AppRouter } from '@/server/routers/_app';
+import type { AddFileInput } from '@/types/trpc';
 
 const f = createUploadthing();
 
@@ -28,7 +27,7 @@ const uploaded = async ({ metadata, file }: Uploaded) => {
   const exist = trpc.file.exist.useQuery({ key: file.key });
   if (exist.data) return;
 
-  const input: inferProcedureInput<AppRouter['file']['add']> = {
+  const input: AddFileInput = {
     key: file.key,
     name: file.name,
     url: file.url,
