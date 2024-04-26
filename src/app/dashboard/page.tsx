@@ -1,12 +1,7 @@
-import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/server';
+import Dashboard from './components/dashboard';
 
 const Page = async () => {
-  return (
-    <>
-      <h1>Dashboard</h1>
-      <LogoutLink>Logout</LogoutLink>
-    </>
-  );
+  return <Dashboard />;
 };
 
 export default Page;
