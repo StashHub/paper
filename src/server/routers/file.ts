@@ -1,5 +1,6 @@
 import { router, authProcedure } from '@/server/trpc';
 import { Status } from '@prisma/client';
+import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
 
 const FileStatus: [Status, ...Status[]] = Object.values(Status) as [
@@ -8,6 +9,11 @@ const FileStatus: [Status, ...Status[]] = Object.values(Status) as [
 ];
 
 export const fileRouter = router({
+  list: authProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.file.findMany({
+      where: { userId: ctx.session.user.id },
+    });
+  }),
   exist: authProcedure
     .input(z.object({ key: z.string() }))
     .query(async ({ input, ctx }) => {
@@ -28,6 +34,22 @@ export const fileRouter = router({
         data: input,
         select: { id: true },
       });
+      return file;
+    }),
+  delete: authProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ input, ctx }) => {
+      const file = await ctx.prisma.file.findUnique({
+        where: { id: input.id, userId: ctx.session.user.id },
+      });
+      if (!file) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: `No file with id '${input.id}'`,
+        });
+      }
+
+      await ctx.prisma.file.delete({ where: { id: input.id } });
       return file;
     }),
   update: authProcedure
