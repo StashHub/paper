@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
@@ -8,7 +6,7 @@ import UploadDropzone from './drop-zone';
 import { Subscribed } from '@/types/stripe';
 
 const UploadButton = ({ subscribed }: Subscribed) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(!!v)}>

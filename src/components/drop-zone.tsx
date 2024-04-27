@@ -6,10 +6,10 @@ import { useState } from 'react';
 const UploadDropzone = ({ subscribed }: Subscribed) => {
   const router = useRouter();
 
-  const [uploading, setUploading] = useState<boolean>(false);
-  const [progress, setProgress] = useState<boolean>(false);
+  const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState(false);
 
-  return <></>;
+  return <>Hello</>;
 };
 
 export default UploadDropzone;
