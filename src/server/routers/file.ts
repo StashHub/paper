@@ -12,6 +12,7 @@ export const fileRouter = router({
   list: authProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.file.findMany({
       where: { userId: ctx.session.user.id },
+      orderBy: { createdAt: 'desc' },
     });
   }),
   exist: authProcedure

@@ -10,5 +10,5 @@ export default function middleware(req: NextRequestWithAuth) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*'],
+  matcher: ['/dashboard/:path*', '/auth-callback'],
 };
