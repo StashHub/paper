@@ -4,20 +4,8 @@ import { createTRPCNext } from '@trpc/next';
 import { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server';
 import type { NextPageContext } from 'next';
 import type { AppRouter } from '@/server/routers/_app';
-import { transformer } from './transformer';
-
-function getBaseUrl() {
-  if (typeof window !== 'undefined') {
-    return '';
-  }
-  // reference for vercel.com
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-
-  // assume localhost
-  return `http://127.0.0.1:${process.env.PORT ?? 3000}`;
-}
+import { transformer } from '../utils/transformer';
+import { absolute } from '@/lib/utils';
 
 /**
  * Extend `NextPageContext` with meta data that can be picked up by `responseMeta()` when server-side rendering
@@ -54,7 +42,7 @@ export const trpc = createTRPCNext<AppRouter, SSRContext>({
             (opts.direction === 'down' && opts.result instanceof Error),
         }),
         httpBatchLink({
-          url: `${getBaseUrl()}/api/trpc`,
+          url: absolute('/api/trpc'),
           /**
            * Set custom request headers on every request from tRPC
            * @link https://trpc.io/docs/v11/ssr
