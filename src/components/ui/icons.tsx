@@ -9,6 +9,10 @@ import {
   Cloud,
   File,
   Loader2,
+  Plus,
+  Trash,
+  MessageCircle,
+  Ghost,
 } from 'lucide-react';
 
 export const Icons = {
@@ -21,6 +25,10 @@ export const Icons = {
   cloud: Cloud,
   file: File,
   loader: Loader2,
+  plus: Plus,
+  trash: Trash,
+  message: MessageCircle,
+  ghost: Ghost,
   logo: ({ ...props }: LucideProps) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'
