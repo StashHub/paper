@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils';
 import ThemeProvider from '@/components/theme-provider';
 import { siteConfig } from '@/config/site';
 import { Toaster } from '@/components/ui/sonner';
+import { TRPCProvider } from '@/trpc/react';
+import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
   title: {
@@ -67,7 +69,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <TRPCProvider cookies={cookies().toString()}>{children}</TRPCProvider>
         </ThemeProvider>
         <Toaster />
       </body>
