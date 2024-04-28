@@ -9,7 +9,7 @@ import type { AppRouter } from '@/server/routers/_app';
 import { transformer } from '@/utils/transformer';
 import { absolute } from '@/lib/utils';
 
-export const trpc = createTRPCReact<AppRouter>();
+export const api = createTRPCReact<AppRouter>();
 
 export const TRPCProvider = (props: {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ export const TRPCProvider = (props: {
   const [queryClient] = useState(() => new QueryClient());
 
   const [trpcClient] = useState(() =>
-    trpc.createClient({
+    api.createClient({
       transformer,
       links: [
         loggerLink({
@@ -40,10 +40,10 @@ export const TRPCProvider = (props: {
   );
 
   return (
-    <trpc.Provider client={trpcClient} queryClient={queryClient}>
+    <api.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
         {props.children}
       </QueryClientProvider>
-    </trpc.Provider>
+    </api.Provider>
   );
 };

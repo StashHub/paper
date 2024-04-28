@@ -1,7 +1,7 @@
 'use client';
 
 import { Icons } from '@/components/ui/icons';
-import { trpc } from '@/trpc/react';
+import { api } from '@/trpc/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 const Page = () => {
@@ -10,7 +10,7 @@ const Page = () => {
   const searchParams = useSearchParams();
   const origin = searchParams.get('origin');
 
-  trpc.auth.callback.useQuery(undefined, {
+  api.auth.callback.useQuery(undefined, {
     onSuccess: ({ success }) => {
       if (success) {
         // user is synced to db

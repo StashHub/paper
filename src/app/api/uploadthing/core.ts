@@ -1,4 +1,4 @@
-import { trpc } from '@/trpc/server';
+import { api } from '@/trpc/server';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { createUploadthing, type FileRouter } from 'uploadthing/next';
 import { UploadThingError } from 'uploadthing/server';
@@ -24,8 +24,8 @@ const auth = async () => {
 };
 
 const uploaded = async ({ metadata, file }: Uploaded) => {
-  const exist = trpc.file.exist.useQuery({ key: file.key });
-  if (exist.data) return;
+  const exist = await api.file.exist.query({ key: file.key });
+  if (exist) return;
 
   const input: AddFileInput = {
     key: file.key,
@@ -34,14 +34,14 @@ const uploaded = async ({ metadata, file }: Uploaded) => {
     userId: metadata.userId,
     status: 'PROCESSING',
   };
-  const createdFile = await trpc.file.add.useMutation().mutateAsync(input);
+  const createdFile = await api.file.add.mutate(input);
 
   try {
     const response = await fetch(
       `https://uploadthing-prod.s3.us-west-2.amazonaws.com/${file.key}`
     );
   } catch (error) {
-    trpc.file.update.useMutation().mutate({
+    api.file.update.mutate({
       id: createdFile.id,
       status: 'FAILED',
     });
