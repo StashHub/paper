@@ -4,18 +4,18 @@ import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/ui/icons';
 import { Skeleton } from '@/components/ui/skeleton';
 import UploadButton from '@/components/upload-button';
-import { trpc } from '@/trpc/react';
+import { api } from '@/trpc/react';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import { useState } from 'react';
 
 const Dashboard = () => {
-  const utils = trpc.useUtils();
+  const utils = api.useUtils();
   const [currentFile, setCurrentFile] = useState<string | null>(null);
 
-  const { data: files, isLoading } = trpc.file.list.useQuery();
+  const { data: files, isLoading } = api.file.list.useQuery();
 
-  const deleteFile = trpc.file.delete.useMutation({
+  const deleteFile = api.file.delete.useMutation({
     onSuccess: async () => {
       // refetch files after a file is deleted
       utils.file.invalidate();

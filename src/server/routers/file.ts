@@ -9,6 +9,20 @@ const FileStatus: [Status, ...Status[]] = Object.values(Status) as [
 ];
 
 export const fileRouter = router({
+  get: authProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ input, ctx }) => {
+      const file = await ctx.prisma.file.findUnique({
+        where: { id: input.id, userId: ctx.session.user.id },
+      });
+      if (!file) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: `No file with id '${input.id}'`,
+        });
+      }
+      return file;
+    }),
   list: authProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.file.findMany({
       where: { userId: ctx.session.user.id },
