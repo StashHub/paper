@@ -1,5 +1,6 @@
 import {
   ChevronRight,
+  ChevronDown,
   SunMedium,
   Moon,
   Laptop,
@@ -18,6 +19,7 @@ import {
 
 export const Icons = {
   chevronRight: ChevronRight,
+  chevronDown: ChevronDown,
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
