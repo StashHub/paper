@@ -30,12 +30,12 @@ const UploadDropzone = ({ subscribed }: Subscribed) => {
     setProgress(0);
 
     const interval = setInterval(() => {
-      setProgress((progress) => {
-        if (progress >= 95) {
+      setProgress((prev) => {
+        if (prev >= 95) {
           clearInterval(interval);
-          return progress;
+          return prev;
         }
-        return progress + 5;
+        return prev + 5;
       });
     }, 500);
 
@@ -107,7 +107,7 @@ const UploadDropzone = ({ subscribed }: Subscribed) => {
               {uploading ? (
                 <div className='w-full mt-4 max-w-xs mx-auto'>
                   <Progress
-                    color={progress === 100 ? 'bg-green-500' : ''}
+                    indicator={progress === 100 ? 'bg-green-500' : ''}
                     value={progress}
                     className='h-1 w-full bg-zinc-200'
                   />
@@ -123,7 +123,7 @@ const UploadDropzone = ({ subscribed }: Subscribed) => {
               <input
                 {...getInputProps()}
                 type='file'
-                id='dropzone-file'
+                id='dropzone'
                 className='hidden'
               />
             </label>

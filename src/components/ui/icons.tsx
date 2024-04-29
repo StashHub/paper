@@ -1,6 +1,8 @@
 import {
   ChevronRight,
   ChevronDown,
+  ChevronUp,
+  RotateCw,
   SunMedium,
   Moon,
   Laptop,
@@ -15,11 +17,14 @@ import {
   MessageCircle,
   Ghost,
   AlertTriangle,
+  Search,
+  Expand,
 } from 'lucide-react';
 
 export const Icons = {
   chevronRight: ChevronRight,
   chevronDown: ChevronDown,
+  chevronUp: ChevronUp,
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
@@ -33,6 +38,9 @@ export const Icons = {
   message: MessageCircle,
   ghost: Ghost,
   warning: AlertTriangle,
+  search: Search,
+  rotate: RotateCw,
+  expand: Expand,
   logo: ({ ...props }: LucideProps) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'

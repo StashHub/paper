@@ -8,6 +8,8 @@ import { Toaster } from '@/components/ui/sonner';
 import { TRPCProvider } from '@/trpc/react';
 import { cookies } from 'next/headers';
 
+import 'simplebar-react/dist/simplebar.min.css';
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
