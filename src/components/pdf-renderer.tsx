@@ -63,8 +63,8 @@ const PdfRenderer = ({ url }: Props) => {
   };
 
   return (
-    <div className='w-full bg-background rounded-md shadow-sm flex flex-col items-center'>
-      <div className='h-14 w-full border-b rounded-md flex items-center justify-between px-2'>
+    <div className='flex flex-col items-center w-full bg-background shadow-sm border border-muted rounded-t-lg '>
+      <div className='h-14 w-full border-b border-muted flex items-center justify-between px-2'>
         <div className='flex items-center gap-1.5'>
           <Button
             disabled={currentPage <= 1}
