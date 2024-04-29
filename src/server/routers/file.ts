@@ -23,6 +23,20 @@ export const fileRouter = router({
       }
       return file;
     }),
+  byKey: authProcedure
+    .input(z.object({ key: z.string() }))
+    .mutation(async ({ input, ctx }) => {
+      const file = await ctx.prisma.file.findFirst({
+        where: { key: input.key, userId: ctx.session.user.id },
+      });
+      if (!file) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: `No file with id '${input.key}'`,
+        });
+      }
+      return file;
+    }),
   list: authProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.file.findMany({
       where: { userId: ctx.session.user.id },
