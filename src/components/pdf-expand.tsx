@@ -49,7 +49,7 @@ const PdfExpand = ({ url }: Props) => {
                   key={index}
                   width={width ? width : 1}
                   pageNumber={index + 1}
-                ></Page>
+                />
               ))}
             </Document>
           </div>
