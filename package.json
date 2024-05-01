@@ -43,6 +43,7 @@
     "react-hook-form": "^7.51.3",
     "react-pdf": "^7.7.1",
     "react-resize-detector": "^10.0.1",
+    "react-textarea-autosize": "^8.5.3",
     "react-wrap-balancer": "^1.1.0",
     "simplebar-react": "^3.2.4",
     "sonner": "^1.4.41",

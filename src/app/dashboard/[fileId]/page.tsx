@@ -1,4 +1,4 @@
-import ChatWrapper from '@/components/chat-wrapper';
+import ChatWrapper from '@/app/dashboard/components/chat-wrapper';
 import PdfRenderer from '@/components/pdf-renderer';
 import { api } from '@/trpc/server';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';

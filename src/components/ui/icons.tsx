@@ -1,4 +1,5 @@
 import {
+  ChevronLeft,
   ChevronRight,
   ChevronDown,
   ChevronUp,
@@ -19,9 +20,12 @@ import {
   AlertTriangle,
   Search,
   Expand,
+  XCircle,
+  Send,
 } from 'lucide-react';
 
 export const Icons = {
+  chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   chevronDown: ChevronDown,
   chevronUp: ChevronUp,
@@ -41,6 +45,8 @@ export const Icons = {
   search: Search,
   rotate: RotateCw,
   expand: Expand,
+  error: XCircle,
+  send: Send,
   logo: ({ ...props }: LucideProps) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'
