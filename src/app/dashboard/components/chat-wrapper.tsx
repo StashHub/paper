@@ -1,12 +1,13 @@
 'use client';
 
+import Link from 'next/link';
 import { api } from '@/trpc/react';
 import { Icons } from '@/components/ui/icons';
 import { Status } from '@prisma/client';
 import Messages from '@/app/dashboard/components/messages';
 import ChatInput from '@/app/dashboard/components/chat-input';
-import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
+import { ChatProvider } from '../context/chat';
 
 type Props = { fileId: string; subscribed: boolean };
 
@@ -74,12 +75,14 @@ const ChatWrapper = ({ fileId, subscribed }: Props) => {
   }
 
   return (
-    <div className='flex flex-col relative min-h-full bg-background divide-y justify-between gap-2'>
-      <div className='flex-1 justify-between flex flex-col mb-28'>
-        <Messages id={fileId} />
+    <ChatProvider fileId={fileId}>
+      <div className='flex flex-col relative min-h-full bg-background divide-y justify-between gap-2'>
+        <div className='flex-1 justify-between flex flex-col mb-28'>
+          <Messages id={fileId} />
+        </div>
+        <ChatInput />
       </div>
-      <ChatInput />
-    </div>
+    </ChatProvider>
   );
 };
 
