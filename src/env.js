@@ -16,6 +16,9 @@ export const env = createEnv({
     PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK: z.boolean().default(true),
     UPLOADTHING_SECRET: z.string(),
     UPLOADTHING_APP_ID: z.string(),
+    OPENAI_API_KEY: z.string(),
+    PINECONE_API_KEY: z.string(),
+    PINECONE_INDEX: z.string(),
   },
 
   /**
@@ -44,6 +47,9 @@ export const env = createEnv({
       process.env.PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK,
     UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
     UPLOADTHING_APP_ID: process.env.UPLOADTHING_APP_ID,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    PINECONE_API_KEY: process.env.PINECONE_API_KEY,
+    PINECONE_INDEX: process.env.PINECONE_INDEX,
   },
 
   /**
