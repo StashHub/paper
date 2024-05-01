@@ -2,15 +2,19 @@ import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/ui/icons';
 import { Textarea } from '@/components/ui/textarea';
 import React, { useRef } from 'react';
+import { useChatContext } from '../context/chat';
 
 type ChatProps = { disabled?: boolean };
 
 const ChatInput = ({ disabled }: ChatProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+  const { message, addMessage, onChange, isLoading } = useChatContext();
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
+      addMessage();
       textareaRef.current?.focus();
     }
   };
@@ -26,15 +30,22 @@ const ChatInput = ({ disabled }: ChatProps) => {
                 ref={textareaRef}
                 autoFocus
                 maxRows={5}
-                onChange={() => {}}
+                value={message}
+                onChange={() => {
+                  onChange;
+                }}
                 onKeyDown={handleKeyDown}
                 placeholder='Type your message...'
-                className='scrollbar-thumb-rounded scrollbar-w-2 scrolling-touch resize-none pr-12 py-3'
+                className='resize-none pr-12 py-3'
               />
               <Button
                 className='absolute bottom-1.5 right-[8px]'
                 aria-label='send message'
-                disabled={disabled}
+                disabled={disabled || isLoading}
+                onClick={() => {
+                  addMessage();
+                  textareaRef.current?.focus();
+                }}
               >
                 <Icons.send className='w-4 h-4' />
               </Button>
