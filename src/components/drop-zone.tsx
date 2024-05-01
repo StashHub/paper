@@ -5,7 +5,7 @@ import Dropzone from 'react-dropzone';
 import { Subscribed } from '@/types/stripe';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useUploadThing } from '@/utils/uploadthing';
+import { useUploadThing } from '@/lib/uploadthing';
 import { api } from '@/trpc/react';
 import { Icons } from '@/components/ui/icons';
 import { Progress } from '@/components/ui/progress';
