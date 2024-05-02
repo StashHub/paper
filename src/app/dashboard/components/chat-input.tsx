@@ -29,11 +29,9 @@ const ChatInput = ({ disabled }: ChatProps) => {
                 rows={1}
                 ref={textareaRef}
                 autoFocus
-                maxRows={5}
+                maxRows={4}
                 value={message}
-                onChange={() => {
-                  onChange;
-                }}
+                onChange={onChange}
                 onKeyDown={handleKeyDown}
                 placeholder='Type your message...'
                 className='resize-none pr-12 py-3'
