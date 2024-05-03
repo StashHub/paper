@@ -58,6 +58,7 @@ const uploaded = async ({ metadata, file }: Uploaded) => {
     const pineconeIndex = pinecone.index(env.PINECONE_INDEX);
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: env.OPENAI_API_KEY,
+      model: 'text-embedding-3-small',
     });
 
     const store = await PineconeStore.fromDocuments(pdf, embeddings, {
