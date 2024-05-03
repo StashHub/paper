@@ -1,9 +1,15 @@
-import { api } from '@/trpc/server';
+import { prisma } from '@/server/prisma';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { createUploadthing, type FileRouter } from 'uploadthing/next';
+import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
+import { OpenAIEmbeddings } from '@langchain/openai';
+import { PineconeStore } from '@langchain/pinecone';
 import { UploadThingError } from 'uploadthing/server';
+
 import type { AddFileInput } from '@/types/trpc';
-import { prisma } from '@/server/prisma';
+import { type Prisma, Status } from '@prisma/client';
+import { pinecone } from '@/lib/pinecone';
+import { env } from '@/env';
 
 const f = createUploadthing();
 
@@ -16,6 +22,10 @@ type Uploaded = {
     url: string;
   };
 };
+
+const defaultFileSelect = {
+  id: true,
+} satisfies Prisma.FileSelect;
 
 const auth = async () => {
   const { getUser } = getKindeServerSession();
@@ -30,23 +40,45 @@ const uploaded = async ({ metadata, file }: Uploaded) => {
     name: file.name,
     url: file.url,
     userId: metadata.userId,
-    status: 'PROCESSING',
+    status: Status.PROCESSING,
   };
-  const createdFile = await prisma.file.create({
+  const created = await prisma.file.create({
     data: input,
-    select: { id: true },
+    select: defaultFileSelect,
   });
+  console.log('File created', file.key);
 
   try {
     const response = await fetch(file.url);
-    const blob = response.blob()
-    
-  } catch (error) {
-    api.file.update.mutate({
-      id: createdFile.id,
-      status: 'FAILED',
+    const blob = await response.blob();
+
+    const loader = new PDFLoader(blob);
+    const pdf = await loader.load();
+
+    const pineconeIndex = pinecone.index(env.PINECONE_INDEX);
+    const embeddings = new OpenAIEmbeddings({
+      openAIApiKey: env.OPENAI_API_KEY,
     });
-    console.log('File upload failed', createdFile.id);
+
+    const store = await PineconeStore.fromDocuments(pdf, embeddings, {
+      pineconeIndex,
+      namespace: created.id,
+    });
+    console.log('Embeddings stored', store.lc_id);
+
+    const uploaded = await prisma.file.update({
+      data: { status: Status.SUCCESS },
+      where: { id: created.id },
+      select: defaultFileSelect,
+    });
+    console.log('File upload completed', uploaded.id);
+  } catch (error) {
+    const updated = await prisma.file.update({
+      data: { status: Status.FAILED },
+      where: { id: created.id },
+      select: defaultFileSelect,
+    });
+    console.log('File upload failed', updated.id, error);
   }
 
   return { uploadedBy: metadata };

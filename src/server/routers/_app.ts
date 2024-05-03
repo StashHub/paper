@@ -4,6 +4,7 @@
 import { createCallerFactory, publicProcedure, router } from '../trpc';
 import { authRouter } from './auth';
 import { fileRouter } from './file';
+import { messageRouter } from './message';
 import { userRouter } from './user';
 
 export const appRouter = router({
@@ -12,6 +13,7 @@ export const appRouter = router({
   user: userRouter,
   file: fileRouter,
   auth: authRouter,
+  message: messageRouter,
 });
 
 export type AppRouter = typeof appRouter;
