@@ -52,7 +52,7 @@ export const POST = async (req: NextRequest) => {
   });
 
   // Search for similar messages in the Pinecone index
-  const results = await store.similaritySearch(message, 5);
+  const results = await store.similaritySearch(message, 4);
 
   // Find the last 8 messages in the file
   const messages = await prisma.message.findMany({

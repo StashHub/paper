@@ -58,14 +58,13 @@ const uploaded = async ({ metadata, file }: Uploaded) => {
     const pineconeIndex = pinecone.index(env.PINECONE_INDEX);
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: env.OPENAI_API_KEY,
-      model: 'text-embedding-3-small',
     });
 
-    const store = await PineconeStore.fromDocuments(pdf, embeddings, {
+    await PineconeStore.fromDocuments(pdf, embeddings, {
       pineconeIndex,
       namespace: created.id,
     });
-    console.log('Embeddings stored', store.lc_id);
+    console.log('Embeddings stored', pdf.length);
 
     const uploaded = await prisma.file.update({
       data: { status: Status.SUCCESS },
