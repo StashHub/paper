@@ -8,7 +8,7 @@ import {
   Moon,
   Laptop,
   LucideProps,
-  User,
+  User2Icon,
   Zap,
   Cloud,
   File,
@@ -16,12 +16,13 @@ import {
   Plus,
   Trash,
   MessageCircle,
+  Bot,
   Ghost,
   AlertTriangle,
   Search,
   Expand,
   XCircle,
-  Send,
+  Send
 } from 'lucide-react';
 
 export const Icons = {
@@ -32,7 +33,7 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
-  avatar: User,
+  avatar: User2Icon,
   zap: Zap,
   cloud: Cloud,
   file: File,
@@ -40,6 +41,7 @@ export const Icons = {
   plus: Plus,
   trash: Trash,
   message: MessageCircle,
+  bot: Bot,
   ghost: Ghost,
   warning: AlertTriangle,
   search: Search,
