@@ -135,7 +135,7 @@ export const fileRouter = router({
       const messages = await ctx.prisma.message.findMany({
         select: defaultMessageSelect,
         take: limit + 1,
-        where: { fileId },
+        where: { fileId: file.id },
         cursor: cursor ? { id: cursor } : undefined,
         orderBy: { createdAt: 'desc' },
       });
