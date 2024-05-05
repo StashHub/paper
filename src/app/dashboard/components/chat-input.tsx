@@ -39,7 +39,7 @@ const ChatInput = ({ disabled }: ChatProps) => {
               <Button
                 className='absolute bottom-1.5 right-[8px]'
                 aria-label='send message'
-                disabled={disabled || isLoading}
+                disabled={disabled || isLoading || message.trim() === ''}
                 onClick={() => {
                   addMessage();
                   textareaRef.current?.focus();
