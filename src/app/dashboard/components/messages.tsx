@@ -44,7 +44,7 @@ const Messages = ({ id }: Props) => {
   }, [entry]);
 
   return (
-    <div className='flex flex-1 flex-col-reverse max-h-[calc(100vh-3.5rem-7rem)] border gap-4 p-3 overflow-y-auto'>
+    <div className='flex flex-1 flex-col-reverse max-h-[calc(100vh-3.5rem-7rem)] gap-4 p-3 overflow-y-auto'>
       {combined && combined.length > 0 ? (
         combined.map((message, index) => {
           return (
@@ -69,7 +69,7 @@ const Messages = ({ id }: Props) => {
           <Icons.bot className='h-8 w-8' />
           <h3 className='font-semibold text-xl'>You&apos;re all set!</h3>
           <p className='text-zinc-500 text-sm'>
-            What&apos;s on your mind? Ask away!.
+            What&apos;s on your mind? Ask away!
           </p>
         </div>
       )}
