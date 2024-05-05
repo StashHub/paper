@@ -59,11 +59,7 @@ const Messages = ({ id }: Props) => {
           );
         })
       ) : isLoading ? (
-        <div className='w-full flex flex-col gap-2'>
-          {Array.from({ length: 5 }, (_, index) => (
-            <Skeleton key={index} className='h-16' />
-          ))}
-        </div>
+        <Skeleton.Chat className='w-full' />
       ) : (
         <div className='flex-1 flex flex-col items-center justify-center gap-2'>
           <Icons.bot className='h-8 w-8' />

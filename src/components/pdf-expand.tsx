@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useResizeDetector } from 'react-resize-detector';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Icons } from './ui/icons';
+import { Icons } from '@/components/ui/icons';
+import { Skeleton } from '@/components/ui/skeleton';
 import SimpleBar from 'simplebar-react';
 import { Document, Page } from 'react-pdf';
 import { toast } from 'sonner';
@@ -30,13 +31,9 @@ const PdfExpand = ({ url }: Props) => {
             <Document
               className='max-h-full'
               file={url}
-              loading={
-                <div className='flex justify-center'>
-                  <Icons.loader className='my-24 h-6 w-6 animate-spin' />
-                </div>
-              }
+              loading={<Skeleton.Document className='max-w-7xl w-full' />}
               onLoadError={() => {
-                toast('Error loading PDF', {
+                toast('Error loading document', {
                   description: 'Please try again later',
                 });
               }}

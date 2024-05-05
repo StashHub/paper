@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Icons } from '@/components/ui/icons';
+import { Skeleton } from '@/components/ui/skeleton';
 import PdfExpand from '@/components/pdf-expand';
 import {
   DropdownMenu,
@@ -63,7 +64,7 @@ const PdfRenderer = ({ url }: Props) => {
   };
 
   return (
-    <div className='flex flex-col items-center w-full bg-background shadow-sm border border-muted rounded-t-lg '>
+    <div className='flex flex-col items-center min-h-full w-full bg-background shadow-sm border border-muted rounded-t-lg '>
       <div className='h-14 w-full border-b border-muted flex items-center justify-between px-2'>
         <div className='flex items-center gap-1.5'>
           <Button
@@ -148,18 +149,14 @@ const PdfRenderer = ({ url }: Props) => {
       </div>
 
       <div className='flex-1 w-full max-h-screen'>
-        <SimpleBar autoHide={true} className='max-h-[calc(100vh-10rem)]'>
+        <SimpleBar autoHide={true} className='max-h-[calc(100vh-8rem)]'>
           <div ref={ref}>
             <Document
               className='max-h-full'
               file={url}
-              loading={
-                <div className='flex justify-center'>
-                  <Icons.loader className='my-24 h-6 w-6 animate-spin' />
-                </div>
-              }
+              loading={<Skeleton.Document />}
               onLoadError={() => {
-                toast('Error loading PDF', {
+                toast('Error loading document', {
                   description: 'Please try again later',
                 });
               }}
@@ -185,7 +182,7 @@ const PdfRenderer = ({ url }: Props) => {
                 rotate={rotation}
                 key={scale}
                 loading={
-                  <div className='flex justify-center'>
+                  <div className='flex flex-1 justify-center'>
                     <Icons.loader className='my-24 h-6 w-6 animate-spin' />
                   </div>
                 }
