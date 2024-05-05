@@ -58,7 +58,7 @@ const ChatWrapper = ({ fileId, subscribed }: Props) => {
   if (data?.status === 'FAILED') {
     return renderState({
       icon: <Icons.error className='h-7 w-7 text-red-500' />,
-      message: 'Too many pages in PDF...',
+      message: 'Uh-oh! System burp',
       children: (
         <Link
           href='/dashboard'

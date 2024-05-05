@@ -22,7 +22,7 @@ import {
   Search,
   Expand,
   XCircle,
-  Send
+  Send,
 } from 'lucide-react';
 
 export const Icons = {
