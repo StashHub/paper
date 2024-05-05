@@ -41,7 +41,6 @@ export const ChatProvider = ({ fileId, children }: Props) => {
       sendMessage.mutation(variables.fileId, variables.message),
     onMutate: async ({ message }) => {
       setMessage('');
-      setIsLoading(true);
 
       // Store the message backup
       messageBackup.current = message;
@@ -79,7 +78,10 @@ export const ChatProvider = ({ fileId, children }: Props) => {
         return { ...old, pages: pages };
       });
 
-      return { messages: messages?.pages.flatMap((page) => page.messages) };
+      setIsLoading(true);
+      return {
+        messages: messages?.pages.flatMap((page) => page.messages) ?? [],
+      };
     },
     onSuccess: async (stream) => {
       setIsLoading(false);
@@ -99,9 +101,9 @@ export const ChatProvider = ({ fileId, children }: Props) => {
 
       while (!done) {
         const { value, done: doneReading } = await reader.read();
-        const chunkValue = decoder.decode(value);
-
-        accumulated = chunkValue;
+        const chunk = decoder.decode(value);
+        accumulated += chunk;
+        done = doneReading;
 
         // append chunk to the actual message
         utils.file.messages.setInfiniteData({ fileId, limit: 10 }, (old) => {
@@ -145,7 +147,6 @@ export const ChatProvider = ({ fileId, children }: Props) => {
                 messages: updatedMessages,
               };
             }
-            done = doneReading;
             return page;
           });
           return { ...old, pages: updatedPages };

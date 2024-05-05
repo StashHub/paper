@@ -109,7 +109,7 @@ export const fileRouter = router({
       const file = await ctx.prisma.file.findUnique({
         where: { id: input.id, userId: ctx.session.user.id },
       });
-      return { status: file ? file.status : ('PENDING' as const) };
+      return { status: file ? file.status : Status.PENDING };
     }),
   messages: authProcedure
     .input(
@@ -124,12 +124,12 @@ export const fileRouter = router({
       const { cursor, fileId } = input;
 
       const file = await ctx.prisma.file.findUnique({
-        where: { id: input.fileId, userId: ctx.session.user.id },
+        where: { id: fileId, userId: ctx.session.user.id },
       });
       if (!file) {
         throw new TRPCError({
           code: 'NOT_FOUND',
-          message: `No file with id '${input.fileId}'`,
+          message: `No file with id '${fileId}'`,
         });
       }
       const messages = await ctx.prisma.message.findMany({
