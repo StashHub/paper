@@ -6,11 +6,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
-import { Button } from './ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Button } from '@/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
-import { Icons } from './ui/icons';
-import Link from 'next/link';
 
 type AccountProps = {
   email: string | undefined;
@@ -33,27 +31,18 @@ const UserNav = ({ email, name, image }: AccountProps) => {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='w-56' align='end' forceMount>
-        <DropdownMenuLabel className='font-normal'>
-          <div className='flex flex-col space-y-1'>
-            <p className='text-sm font-medium leading-none'>{name}</p>
+      <DropdownMenuContent className='w-56 px-3 py-3' align='end' forceMount>
+        <DropdownMenuLabel className='font-medium'>
+          <div className='flex flex-1 flex-col space-y-1.5'>
+            <p className='text-sm leading-none'>{name}</p>
             <p className='text-xs leading-none text-muted-foreground'>
               {email}
             </p>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          {subscribed ? (
-            <Link href='/dashboard/billing'>Manage Subscription</Link>
-          ) : (
-            <Link href='/pricing'>
-              Upgrade <Icons.zap className='text-blue-600 h-4 w-4 ml-1.5' />
-            </Link>
-          )}
-        </DropdownMenuItem>
+        <DropdownMenuSeparator className='mt-2 mb-2' />
         <DropdownMenuItem>
-          <LogoutLink>Log out</LogoutLink>
+          <LogoutLink className='w-full text-red-600'>Log out</LogoutLink>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

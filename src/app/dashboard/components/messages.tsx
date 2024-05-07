@@ -44,7 +44,7 @@ const Messages = ({ id }: Props) => {
   }, [entry]);
 
   return (
-    <div className='flex flex-1 flex-col-reverse max-h-[calc(100vh-3.5rem-7rem)] gap-4 p-3 overflow-y-auto'>
+    <div className='flex flex-1 flex-col-reverse max-h-[calc(100vh-3.5rem-7rem)] gap-4 p-3 overflow-y-auto overscroll-none'>
       {combined && combined.length > 0 ? (
         combined.map((message, index) => {
           return (
