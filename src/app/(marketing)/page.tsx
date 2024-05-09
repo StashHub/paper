@@ -22,7 +22,7 @@ export default async function Home() {
           seconds.
         </Heading>
         <Description>
-          Aiden allows you to have conversations with any PDF document. Simply
+          Paper allows you to have conversations with any PDF document. Simply
           upload your file and start asking questions right away.
         </Description>
         <Actions>
@@ -55,7 +55,7 @@ export default async function Home() {
               Start chatting in minutes
             </h2>
             <p className='mt-4 text-lg text-muted-foreground'>
-              Chatting to your PDF files has never been easier than with Aiden.
+              Chatting to your PDF files has never been easier than with Paper.
             </p>
           </div>
         </div>
@@ -99,7 +99,7 @@ export default async function Home() {
                 Start asking questions
               </span>
               <span className='mt-2 text-muted-foreground'>
-                It&apos;s that simple. Try out Aiden today - it really takes
+                It&apos;s that simple. Try out Paper today - it really takes
                 less than a minute.
               </span>
             </div>

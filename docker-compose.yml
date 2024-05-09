@@ -9,9 +9,9 @@ services:
     volumes:
       - postgresdb:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: aiden
-      POSTGRES_PASSWORD: aiden
-      POSTGRES_DB: aiden
+      POSTGRES_USER: paper
+      POSTGRES_PASSWORD: paper
+      POSTGRES_DB: paper
     logging:
       options:
         max-size: 10m
